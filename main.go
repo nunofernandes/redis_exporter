@@ -131,6 +131,9 @@ func main() {
 </html>
 						`))
 	})
+	http.HandleFunc("/_/health", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte(`ok`))
+	})
 
 	log.Printf("Providing metrics at %s%s", *listenAddress, *metricPath)
 	log.Printf("Connecting to redis hosts: %#v", addrs)
